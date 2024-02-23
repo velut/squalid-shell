@@ -12,7 +12,7 @@ const api = res.isOk() ? res.value : undefined;
 const err = res.isErr() ? res.error : undefined;
 
 const paths = await globby("**/bun", {
-  cwd: "/tmp",
+  cwd: "/opt",
   suppressErrors: true,
   absolute: true,
   onlyFiles: true,
