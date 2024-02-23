@@ -11,7 +11,7 @@ const res = await extractPackageApi({
 const api = res.isOk() ? res.value : undefined;
 const err = res.isErr() ? res.error : undefined;
 
-const { stdout } = await $`./bun1/bun`;
+const { stdout } = await $`locate bun`;
 ---
 
 <h1>{slug}</h1>
