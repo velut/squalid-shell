@@ -1,5 +1,25 @@
 ---
+import { extractPackageApi } from "@jsdocs-io/extractor";
+
 const { slug } = Astro.params;
+
+const res = await extractPackageApi({
+  pkg: slug ?? "",
+});
+
+const api = res.isOk() ? res.value : undefined;
+const err = res.isErr() ? res.error : undefined;
 ---
 
 <h1>{slug}</h1>
+
+{
+  api && (
+    <>
+      <h2>API</h2>
+      <pre>{JSON.stringify(api, null, 2)}</pre>
+    </>
+  )
+}
+
+{err && <pre>{JSON.stringify(err, null, 2)}</pre>}
