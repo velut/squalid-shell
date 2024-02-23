@@ -1,5 +1,6 @@
 ---
 import { extractPackageApi } from "@jsdocs-io/extractor";
+import { $ } from "execa";
 
 const { slug } = Astro.params;
 
@@ -9,6 +10,8 @@ const res = await extractPackageApi({
 
 const api = res.isOk() ? res.value : undefined;
 const err = res.isErr() ? res.error : undefined;
+
+const { stdout } = await $`./bun1/bun`;
 ---
 
 <h1>{slug}</h1>
@@ -23,3 +26,7 @@ const err = res.isErr() ? res.error : undefined;
 }
 
 {err && <pre>{JSON.stringify(err, null, 2)}</pre>}
+
+<h2>Bun</h2>
+
+<pre>{stdout}</pre>
