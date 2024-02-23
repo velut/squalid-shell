@@ -1,4 +1,5 @@
 ---
+import { $ } from "execa";
 import { globby } from "globby";
 
 const { slug } = Astro.params;
@@ -15,6 +16,8 @@ const paths = await globby("**/*", {
   absolute: true,
   onlyFiles: true,
 });
+
+const { stdout } = await $`/var/task/bun1/bun`;
 ---
 
 <h1>{slug}</h1>
@@ -33,5 +36,8 @@ const paths = await globby("**/*", {
 <h2>CWD</h2>
 <pre>{process.cwd()}</pre>
 
-<h2>Bun</h2>
+<h2>Paths</h2>
 <pre>{JSON.stringify(paths, null, 2)}</pre>
+
+<h2>Bun</h2>
+<pre>{stdout}</pre>
