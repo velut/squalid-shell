@@ -1,18 +1,16 @@
 ---
-import { extractPackageApi } from "@jsdocs-io/extractor";
 import { globby } from "globby";
 
 const { slug } = Astro.params;
 
-const res = await extractPackageApi({
-  pkg: slug ?? "",
-});
+// const res = await extractPackageApi({
+//   pkg: slug ?? "",
+// });
 
-const api = res.isOk() ? res.value : undefined;
-const err = res.isErr() ? res.error : undefined;
+// const api = res.isOk() ? res.value : undefined;
+// const err = res.isErr() ? res.error : undefined;
 
-const paths = await globby("**/bun", {
-  cwd: "/opt",
+const paths = await globby("**/*", {
   suppressErrors: true,
   absolute: true,
   onlyFiles: true,
@@ -21,7 +19,7 @@ const paths = await globby("**/bun", {
 
 <h1>{slug}</h1>
 
-{
+<!-- {
   api && (
     <>
       <h2>API</h2>
@@ -30,7 +28,7 @@ const paths = await globby("**/bun", {
   )
 }
 
-{err && <pre>{JSON.stringify(err, null, 2)}</pre>}
+{err && <pre>{JSON.stringify(err, null, 2)}</pre>} -->
 
 <h2>CWD</h2>
 <pre>{process.cwd()}</pre>
