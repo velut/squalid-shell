@@ -17,10 +17,12 @@
     "@jsdocs-io/extractor": "1.0.0-0",
     "astro": "^4.4.1",
     "execa": "^8.0.1",
+    "globby": "^14.0.1",
     "source-map-support": "^0.5.21",
     "typescript": "^5.3.3"
   },
   "devDependencies": {
+    "@types/node": "^20.11.20",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0"
   }
