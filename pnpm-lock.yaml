@@ -12,8 +12,8 @@ dependencies:
     specifier: ^7.3.3
     version: 7.3.3(astro@4.4.1)
   '@jsdocs-io/extractor':
-    specifier: 1.0.0-0
-    version: 1.0.0-0
+    specifier: 1.0.0-1
+    version: 1.0.0-1
   astro:
     specifier: ^4.4.1
     version: 4.4.1(@types/node@20.11.20)(typescript@5.3.3)
@@ -656,8 +656,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: false
 
-  /@jsdocs-io/extractor@1.0.0-0:
-    resolution: {integrity: sha512-Y9hT5RAQ6F6uuZq17cLIoJ75sl9BAwvawHm+B6xykaDn7kNXQ0RKokPUOObdCsqC2JX5Ls/YuRmMrhOdrue7mg==}
+  /@jsdocs-io/extractor@1.0.0-1:
+    resolution: {integrity: sha512-h5mItDfSKSt5mO1AITfD17njHYCAKCfKgjkEwKLHhhK58e/h/r9Q8ewVfVm7SIS7OJcS0qdvgwZgqsJHNkcuag==}
     engines: {node: '>=20'}
     dependencies:
       '@microsoft/tsdoc': 0.14.2

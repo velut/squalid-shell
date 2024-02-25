@@ -1,15 +1,18 @@
 ---
-import { $ } from "execa";
+import { extractPackageApi } from "@jsdocs-io/extractor";
+import { execa } from "execa";
 import { globby } from "globby";
 
 const { slug } = Astro.params;
 
-// const res = await extractPackageApi({
-//   pkg: slug ?? "",
-// });
+const bunPath = process.env.VERCEL ? "/var/task/bun1/bun" : "bun";
 
-// const api = res.isOk() ? res.value : undefined;
-// const err = res.isErr() ? res.error : undefined;
+const res = await extractPackageApi({
+  pkg: slug ?? "",
+  bunPath,
+});
+const api = res.isOk() ? res.value : undefined;
+const err = res.isErr() ? res.error : undefined;
 
 const paths = await globby("**/*", {
   suppressErrors: true,
@@ -17,12 +20,12 @@ const paths = await globby("**/*", {
   onlyFiles: true,
 });
 
-const { stdout } = await $`/var/task/bun1/bun`;
+const { stdout } = await execa(bunPath);
 ---
 
 <h1>{slug}</h1>
 
-<!-- {
+{
   api && (
     <>
       <h2>API</h2>
@@ -31,7 +34,15 @@ const { stdout } = await $`/var/task/bun1/bun`;
   )
 }
 
-{err && <pre>{JSON.stringify(err, null, 2)}</pre>} -->
+{
+  err && (
+    <>
+      <h2>Error</h2>
+      <pre>{err.message}</pre>
+      <pre>{err.cause}</pre>
+    </>
+  )
+}
 
 <h2>CWD</h2>
 <pre>{process.cwd()}</pre>
